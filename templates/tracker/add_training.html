@@ -6,4 +6,16 @@
 
 {% block content %}
 <h2>Training Log {{ date }}</h2>
+<h5>Workouts</h5>
+<ul>
+{% for workout in workouts %}
+    <li>{{ workout }}</li>
+{% endfor %}
+</ul>
+<h5>Notes</h5>
+<ul>
+{% for note in notes %}
+    <li>{{ note }}</li>
+{% endfor %}
+</ul>
 {% endblock %}

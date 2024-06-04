@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Workout, Image, Video
+from .models import Workout, Image, Video, Note
 
 class ImageInline(admin.TabularInline):
     model = Image
@@ -17,3 +17,4 @@ class WorkoutAdmin(admin.ModelAdmin):
 admin.site.register(Workout, WorkoutAdmin)
 admin.site.register(Image)
 admin.site.register(Video)
+admin.site.register(Note)
