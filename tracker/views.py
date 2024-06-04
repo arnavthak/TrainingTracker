@@ -8,6 +8,6 @@ def index(request):
 def add_training(request):
     date = request.GET.get('date')
     if date:
-        return HttpResponse(f"{date}")
+        return render(request, 'tracker/add_training.html', {'date': date})
     else:
-        return HttpResponse("Could not access date data")
+        return render(request, 'tracker/no_date_provided.html')
