@@ -18,4 +18,6 @@
     <li>{{ note }}</li>
 {% endfor %}
 </ul>
+<p><a href="{% url 'tracker:add_workout' %}?date={{ date }}" class="button">Add Workout</a></p>
+<p><a href="{% url 'tracker:add_note' %}?date={{ date }}" class="button">Add Note</a></p>
 {% endblock %}

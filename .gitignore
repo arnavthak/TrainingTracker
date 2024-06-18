@@ -147,3 +147,6 @@ dmypy.json
 
 # VS Code
 .vscode/
+
+# Media
+media/

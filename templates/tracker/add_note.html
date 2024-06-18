@@ -1,0 +1,13 @@
+<!-- templates/tracker/add_note.html -->
+
+{% extends "base.html" %}
+
+{% block title %}Add Note{% endblock %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+{% endblock %}
