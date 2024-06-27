@@ -38,10 +38,21 @@ def add_workout(request):
             workout.date = request.GET.get('date')
             workout.save()
             
-            video_formset.instance = workout
-            image_formset.instance = workout
-            video_formset.save()
-            image_formset.save()
+            videos = video_formset.save(commit=False)
+            #print(videos)
+            for vid in videos:
+                vid.workout = workout
+                vid.created_by = request.user
+                vid.save()
+            video_formset.save_m2m()
+
+            images = image_formset.save(commit=False)
+            for image in images:
+                image.workout = workout
+                image.created_by = request.user
+                image.save()
+            image_formset.save_m2m()
+
             return HttpResponse("Workout saved successfully!")
     else:
         form = WorkoutForm()

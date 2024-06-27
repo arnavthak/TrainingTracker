@@ -1,2 +1,2 @@
-1. Add forms to templates/tracker/add_training.html to add Notes and Workouts
-2. Beautify the front-end
+1. Beautify the front-end
+2. Edit functionality for existing workouts and Notes

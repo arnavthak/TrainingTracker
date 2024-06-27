@@ -1,24 +1,44 @@
 <!-- templates/tracker/add_workout.html -->
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 {% extends "base.html" %}
 
 {% block title %}Add Workout{% endblock %}
 
 {% block content %}
 <form method="post" enctype="multipart/form-data">
+    <h2>Description</h2>
     {% csrf_token %}
-    {{ form.as_p }}
+    {{ form.as_table }}
     
     <h2>Videos</h2>
     {{ video_formset.management_form }}
-    {% for form in video_formset %}
-        {{ form.as_p }}
-    {% endfor %}
+    <div id="video_form_set">
+        {% for form in video_formset %}
+            <table class="no_error">
+                {{ form.as_table }}
+            </table>
+        {% endfor %}
+    </div>
+    <input type="button" value="Add More Videos" id="add_more_videos">
+    <div id="empty_form" style="display:none">
+        <table class="no_error">
+            {{ video_formset.empty_form.as_table }}
+        </table>
+    </div>
+    <script>
+        $('#add_more_videos').click(function() {
+            var form_idx = $('#id_videos-TOTAL_FORMS').val();
+            $('#video_form_set').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
+            $('#id_videos-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+        });
+    </script>
     
     <h2>Images</h2>
     {{ image_formset.management_form }}
     {% for form in image_formset %}
-        {{ form.as_p }}
+        {{ form.as_table }}
     {% endfor %}
     
     <button type="submit">Save</button>

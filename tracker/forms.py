@@ -23,5 +23,5 @@ class ImageForm(ModelForm):
         fields = ['image_file', 'caption']
 
 # Inline formsets
-VideoInlineFormSet = inlineformset_factory(Workout, Video, form=VideoForm, extra=1, can_delete=True)
-ImageInlineFormSet = inlineformset_factory(Workout, Image, form=ImageForm, extra=1, can_delete=True)
+VideoInlineFormSet = inlineformset_factory(Workout, Video, form=VideoForm, extra=1, can_delete=False)
+ImageInlineFormSet = inlineformset_factory(Workout, Image, form=ImageForm, extra=1, can_delete=False)
