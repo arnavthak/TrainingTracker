@@ -39,7 +39,7 @@ def add_workout(request):
             workout.save()
             
             videos = video_formset.save(commit=False)
-            #print(videos)
+            print(videos)
             for vid in videos:
                 vid.workout = workout
                 vid.created_by = request.user
@@ -47,6 +47,7 @@ def add_workout(request):
             video_formset.save_m2m()
 
             images = image_formset.save(commit=False)
+            print(images)
             for image in images:
                 image.workout = workout
                 image.created_by = request.user

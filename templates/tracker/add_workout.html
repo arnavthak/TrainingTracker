@@ -22,7 +22,7 @@
         {% endfor %}
     </div>
     <input type="button" value="Add More Videos" id="add_more_videos">
-    <div id="empty_form" style="display:none">
+    <div id="video_empty_form" style="display:none">
         <table class="no_error">
             {{ video_formset.empty_form.as_table }}
         </table>
@@ -30,16 +30,33 @@
     <script>
         $('#add_more_videos').click(function() {
             var form_idx = $('#id_videos-TOTAL_FORMS').val();
-            $('#video_form_set').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
+            $('#video_form_set').append($('#video_empty_form').html().replace(/__prefix__/g, form_idx));
             $('#id_videos-TOTAL_FORMS').val(parseInt(form_idx) + 1);
         });
     </script>
     
     <h2>Images</h2>
     {{ image_formset.management_form }}
-    {% for form in image_formset %}
-        {{ form.as_table }}
-    {% endfor %}
+    <div id="image_form_set">
+        {% for form in image_formset %}
+            <table class="no_error">
+                {{ form.as_table }}
+            </table>
+        {% endfor %}
+    </div>
+    <input type="button" value="Add More Images" id="add_more_images">
+    <div id="image_empty_form" style="display:none">
+        <table class="no_error">
+            {{ image_formset.empty_form.as_table }}
+        </table>
+    </div>
+    <script>
+        $('#add_more_images').click(function() {
+            var form_idx = $('#id_images-TOTAL_FORMS').val();
+            $('#image_form_set').append($('#image_empty_form').html().replace(/__prefix__/g, form_idx));
+            $('#id_images-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+        });
+    </script>
     
     <button type="submit">Save</button>
 </form>
