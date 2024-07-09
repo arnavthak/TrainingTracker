@@ -9,7 +9,7 @@
 <h5>Workouts</h5>
 <ul>
 {% for workout in workouts %}
-    <li>{{ workout }}</li>
+    <li><a href="{% url 'viewer:view_workout' %}?id={{ workout.id }}">{{ workout }}</a></li>
 {% endfor %}
 </ul>
 <h5>Notes</h5>

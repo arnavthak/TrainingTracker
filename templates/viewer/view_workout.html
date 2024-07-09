@@ -1,0 +1,27 @@
+<!-- templates/viewer/view_workout.html -->
+
+{% extends "base.html" %}
+
+{% block title %}View Workout{% endblock %}
+
+{% block content %}
+<h2>Description</h2>
+{{ description }}
+<h2>Images</h2>
+<div>
+    {% for image in images %}
+        <img src="{{ image.image_file.url }}" alt="Image">
+        {{ image.caption }}
+    {% endfor %}
+</div>
+<h2>Videos</h2>
+<div>
+    {% for video in videos %}
+        <video width="320" height="240" controls>
+            <source src="{{ video.video_file.url }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        {{ video.caption }}
+    {% endfor %}
+</div>
+{% endblock %}
