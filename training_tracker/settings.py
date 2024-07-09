@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'accounts',
     'bootstrap5',
     'viewer',
+    'editor',
 ]
 
 MIDDLEWARE = [
