@@ -15,7 +15,7 @@
 <h5>Notes</h5>
 <ul>
 {% for note in notes %}
-    <li>{{ note }}</li>
+    <li><a href="{% url 'viewer:view_note' %}?id={{ note.id }}">{{ note }}</a></li>
 {% endfor %}
 </ul>
 <p><a href="{% url 'tracker:add_workout' %}?date={{ date }}" class="button">Add Workout</a></p>
