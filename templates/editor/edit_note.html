@@ -1,0 +1,14 @@
+<!-- templates/editor/edit_note.html -->
+
+{% extends "base.html" %}
+
+{% block title %}Edit Note{% endblock %}
+
+{% block content %}
+<h2>Note</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+{% endblock %}
