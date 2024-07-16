@@ -33,6 +33,6 @@ def view_note(request):
     if note_instance.created_by != user:
         return HttpResponse("The note object associated with id {} does not belong to you!".format(id))
     
-    note = note_instance.note
+    #note = note_instance.note
 
-    return render(request, 'viewer/view_note.html', {"note": note})
+    return render(request, 'viewer/view_note.html', {"note": note_instance})

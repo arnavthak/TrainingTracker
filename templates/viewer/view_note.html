@@ -6,5 +6,6 @@
 
 {% block content %}
 <h2>Note</h2>
-{{ note }}
+{{ note.note }}
+<p><a href="{% url 'editor:edit_note' %}?id={{ note.id }}" class="button">Edit Note</a></p>
 {% endblock %}
