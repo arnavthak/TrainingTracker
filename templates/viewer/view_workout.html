@@ -6,7 +6,7 @@
 
 {% block content %}
 <h2>Description</h2>
-{{ description }}
+{{ workout.description }}
 <h2>Images</h2>
 <div>
     {% for image in images %}
@@ -24,4 +24,5 @@
         {{ video.caption }}
     {% endfor %}
 </div>
+<p><a href="{% url 'editor:edit_workout' %}?id={{ workout.id }}" class="button">Edit Note</a></p>
 {% endblock %}

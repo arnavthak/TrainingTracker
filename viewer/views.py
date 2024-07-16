@@ -15,11 +15,10 @@ def view_workout(request):
     if workout_instance.created_by != user:
         return HttpResponse("The workout object associated with id {} does not belong to you!".format(id))
 
-    description = workout_instance.description
     images = Image.objects.filter(created_by=user, workout=workout_instance)
     videos = Video.objects.filter(created_by=user, workout=workout_instance)
 
-    return render(request, 'viewer/view_workout.html', {'description': description, 'images': images, 'videos': videos})
+    return render(request, 'viewer/view_workout.html', {'workout': workout_instance, 'images': images, 'videos': videos})
 
 def view_note(request):
     id = request.GET.get('id')

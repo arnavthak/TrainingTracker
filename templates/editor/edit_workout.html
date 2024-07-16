@@ -1,0 +1,63 @@
+<!-- templates/editor/edit_workout.html -->
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+{% extends "base.html" %}
+
+{% block title %}Edit Workout{% endblock %}
+
+{% block content %}
+<h2>Workout</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ workout_form.as_p }}
+
+    <h2>Images</h2>
+    {{ image_formset.management_form }}
+    <div id="image_form_set">
+        {% for form in image_formset %}
+            <table class="no_error">
+                {{ form.as_table }}
+            </table>
+        {% endfor %}
+    </div>
+    <input type="button" value="Add More Images" id="add_more_images">
+    <div id="image_empty_form" style="display:none">
+        <table class="no_error">
+            {{ image_formset.empty_form.as_table }}
+        </table>
+    </div>
+    <script>
+        $('#add_more_images').click(function() {
+            var form_idx = $('#id_images-TOTAL_FORMS').val();
+            $('#image_form_set').append($('#image_empty_form').html().replace(/__prefix__/g, form_idx));
+            $('#id_images-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+        });
+    </script>
+
+    <h2>Videos</h2>
+    {{ video_formset.management_form }}
+    <div id="video_form_set">
+        {% for form in video_formset %}
+            <table class="no_error">
+                {{ form.as_table }}
+            </table>
+        {% endfor %}
+    </div>
+    <input type="button" value="Add More Videos" id="add_more_videos">
+    <div id="video_empty_form" style="display:none">
+        <table class="no_error">
+            {{ video_formset.empty_form.as_table }}
+        </table>
+    </div>
+    <script>
+        $('#add_more_videos').click(function() {
+            var form_idx = $('#id_videos-TOTAL_FORMS').val();
+            $('#video_form_set').append($('#video_empty_form').html().replace(/__prefix__/g, form_idx));
+            $('#id_videos-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+        });
+    </script>
+
+    <button type="submit">Save</button>
+</form>
+{% endblock %}
